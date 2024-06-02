@@ -10,7 +10,7 @@ var navLinks = document.getElementById("navLinks");
 
 
 let userMessage = null; // Variable to store user's message
-const API_KEY = "87d1a60a8msh9150d28133fd93ap1f9cb7jsn6a2414121850"; //API key
+const API_KEY = "487d1a60a8msh9150d28133fd93ap1f9cb7jsn6a2414121850"; //API key
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {

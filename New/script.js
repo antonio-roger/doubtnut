@@ -13,7 +13,7 @@ const newChatBtn = document.getElementById("new-chat");
 let userMessage = null;
 let activeChat = null;
 let chatHistory = [];
-const API_KEY = "8f344fc6cdmshd76b3e7c61e7dd2p1ec063jsnb7c20e582d21"; // Your provided RapidAPI key
+const API_KEY = "487d1a60a8msh9150d28133fd93ap1f9cb7jsn6a2414121850"; 
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
