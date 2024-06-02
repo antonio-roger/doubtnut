@@ -1,0 +1,242 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.header {
+    height: fit-content;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    background-position: center;
+    position: relative;
+    padding: 10px;
+    text-align: center;
+    
+  }
+
+.hero-section {
+    background: #e8491d;
+    color: #ffffff;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.hero-section .hero-btn {
+    background: #35424a;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.hero-section .hero-btn:hover {
+    background: #000000;
+}
+
+.section {
+    background: #ffffff;
+    padding: 2rem 0;
+    margin-top: 1rem;
+}
+
+.section .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.section .section-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.section .btn {
+    background: #e8491d;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.section .btn:hover {
+    background: #000000;
+}
+
+.doubts-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.doubt-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin: 10px;
+}
+
+.doubt-content h3 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.doubt-content p {
+    color: #666;
+}
+
+.doubt-answer {
+    margin-top: 1rem;
+    color: #333;
+}
+
+.doubt-actions {
+    margin-top: 1rem;
+}
+
+.doubt-actions .btn {
+    background: #e8491d;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.doubt-actions .btn:hover {
+    background: #000000;
+}
+
+.subject-tag {
+    display: inline-block;
+    background: #e8491d;
+    color: #ffffff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.article-card {
+    display: flex;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.article-card img {
+    width: 150px;
+    object-fit: cover;
+}
+
+.article-content {
+    padding: 1rem;
+}
+
+.article-content h3 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.article-content p {
+    color: #666;
+}
+
+.article-content .btn {
+    background: #e8491d;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.article-content .btn:hover {
+    background: #000000;
+}
+
+.footer {
+    background: #35424a;
+    color: #ffffff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.footer .footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer .social-icons {
+    margin-top: 1rem;
+}
+
+.footer .social-icons a {
+    color: #ffffff;
+    margin: 0 0.5rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.footer .social-icons a:hover {
+    color: #e8491d;
+}
+
+/* iFrame styling */
+iframe {
+    border: none;
+    width: 80%;
+    height: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+/* Centering iframe */
+iframe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    .article-card {
+        flex-direction: column;
+    }
+
+    .article-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    iframe {
+        width: 100%;
+    }
+}

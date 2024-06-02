@@ -1,0 +1,857 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px;
+  background-image: url("other/20008477_6229893.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: transparent;
+  
+}
+
+.header {
+  height: fit-content;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  background-position: center;
+  position: relative;
+  padding: 10px;
+  text-align: center;
+  
+}
+
+
+.header h1{
+  font-family: 'Roboto', sans-serif; 
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  color: orange;
+  font-size: 4em;
+}
+.header h2{
+  font-family: 'Roboto', sans-serif; 
+  font-weight: bold;
+  text-align: center;
+  font-size: xx-large;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  color: rgb(255, 255, 255);
+}
+
+
+.header::before {
+content: '';
+position: relative;
+top: auto;
+left: auto;
+width: auto;
+height: auto;
+background: rgba(0, 0, 0, 0.1); /* Adjust overlay color and opacity */
+}
+
+.popup-overlay {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Popup Content */
+.popup-content {
+  background-color: #ffffff;
+  margin: 15% auto;
+  padding: 20px;
+  width: auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  align-items: last baseline;
+}
+
+/* Sign In Link */
+.sign-in-link {
+  display: inline-block;
+  background-color: #724ae8;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+
+*{
+margin: 0;
+padding: 0;
+font-family: 'Poppins', sans-serif;
+}
+
+.nav img{
+width: 150px;
+}
+.nav-links{
+flex: 1;
+text-align: right;
+background-color: #ffffff;
+border-radius: 20px;
+width: 100%;
+height: auto;
+}
+.nav-links ul li{
+list-style: none;
+display: inline-block;
+padding: 8px 12px;
+position: relative;
+}
+.nav-links ul li a{
+color: black;
+text-decoration: none;
+font-size: 13px;
+font-weight: 700;
+transition: color 0.3s ease;
+}
+.nav-links ul li::after{
+content: '';
+width: 0%;
+height: 2px;
+background: #ff0000;
+display: block;
+margin: auto;
+transition: 0.3s;
+}
+.nav-links ul li:hover:after{
+width: 100%;
+}
+.nav-links ul li a:hover {
+  color: #f44336;
+}
+
+
+.nav-links ul li a {
+  color: #0095ff; /* Update link color */
+}
+
+.nav-links ul li::after {
+  background: #fff; /* Update underline color */
+}
+
+.nav-links ul li:hover::after {
+  background: #f44336; 
+  float: none;
+    display: block;
+    text-align: left;/* Update hover underline color */
+}
+
+.text-box{
+width: 90%;
+color:black;
+position: relative;
+text-align: center;
+}
+.text-box h1{
+font-size: 62px;
+}
+.text-box p{
+margin: 10px 0 40px;
+font-size: 14px;
+color: black;
+}
+.hero-btn{
+display: inline-block;
+text-decoration: none;
+color: black;
+border: 1px solid black;
+padding: 12px 34px;
+font-weight: bolder;
+background: transparent;
+position: relative;
+cursor: pointer;
+}
+.hero-btn:hover{
+border: 1px solid #f44336;
+background: #f44336;
+transition: 1s;
+}
+nav .fa{
+display: block;
+}
+
+.footer{
+width: 100%;
+text-align: center;
+padding: 30px 0;
+color: #721c24;
+background-image: url("https://anokha.amrita.edu/_next/image?url=%2Fimages%2Ffooter_image.png&w=1200&q=75");
+}
+.footer h4{
+margin-bottom: 25px;
+margin-top: 20px;
+font-weight: 600;
+color: #000000;
+}
+.icons .fa-brands{
+color:  #000000;
+margin: 0 13px;
+cursor: pointer;
+padding: 18px 0;
+}
+.icons a{
+  color: #ffffff;
+  text-decoration: none;
+  border: none;
+  }
+.fa-solid{
+color: #f44336;
+}
+
+
+
+
+
+
+
+.nav {
+  padding: 6%; /* Adjust padding for better spacing */
+  overflow: hidden;
+  
+  
+}
+
+.nav a {
+  float: left;
+  float: bottom;
+  color: #ff0000; /* Update link text color */
+  text-align: center;
+  padding: 10px 10px;
+  
+}
+
+
+
+.nav-links ul li::after {
+  background: #fff; /* Update underline color */
+}
+
+.nav-links ul li:hover::after {
+  background: #f44336; 
+  float: none;
+    display: block;
+    text-align: left;/* Update hover underline color */
+}
+
+
+
+
+
+
+
+
+
+.text-box {
+  width: 70%;
+  color:black;
+  float: left;
+  position: absolute;
+  text-align: center;
+}
+
+/* Right column */
+
+
+/* Add a card effect for articles */
+
+
+.card h4 li{
+  color: rgb(178, 55, 90);
+  text-align: justify;
+  padding: 20px;
+  margin: 20px;
+}
+
+/* Clear floats after the columns */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.hero-btn{
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  padding: 12px 34px;
+  font-size: 13;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+}
+.hero-btn:hover{
+  border: 1px solid #f44336;
+  background: #f44336;
+  transition: 1s;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-container img {
+  width: 220px;
+  height: 140px;
+  transition: opacity 0.3s;
+}
+.image-container:hover img {
+  opacity: 0.3;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: rgb(255, 255, 255);
+  margin-top: 20px;
+  border-radius: 40px;
+}
+
+/* FOR CHAT BOT*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.chatbot-toggler {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  outline: none;
+  border: none;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #724ae8;
+  transition: all 0.2s ease;
+  animation: jumpAnimation 0.7s infinite alternate; /* Apply the animation */
+}
+
+@keyframes jumpAnimation {
+    0% {
+        transform: translateY(0); /* Start position */
+    }
+    50% {
+        transform: translateY(-10px); /* Mid position (jumping up) */
+    }
+    100% {
+        transform: translateY(0); /* End position (returning to start) */
+    }
+}
+body.show-chatbot .chatbot-toggler {
+  transform: rotate(90deg);
+}
+.chatbot-toggler span {
+  color: #fff;
+  position: absolute;
+}
+.chatbot-toggler span:last-child,
+
+body.show-chatbot .chatbot-toggler span:first-child  {
+  opacity: 0;
+}
+body.show-chatbot .chatbot-toggler span:last-child {
+  opacity: 1;
+}
+.chatbot {
+  position: fixed;
+  right: 35px;
+  bottom: 90px;
+  width: 420px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 15px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: bottom right;
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+              0 32px 64px -48px rgba(0,0,0,0.5);
+  transition: all 0.1s ease;
+}
+body.show-chatbot .chatbot {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.chatbot header {
+  padding: 16px 0;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  background: #724ae8;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.chatbot header span {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  display: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.chatbot .chatbox {
+  overflow-y: auto;
+  height: 510px;
+  padding: 30px 20px 100px;
+}
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar {
+  width: 6px;
+}
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 25px;
+}
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 25px;
+}
+.chatbox .chat {
+  display: flex;
+  list-style: none;
+}
+.chatbox .outgoing {
+  margin: 20px 0;
+  justify-content: flex-end;
+}
+.chatbox .incoming span {
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  cursor: default;
+  text-align: center;
+  line-height: 32px;
+  align-self: flex-end;
+  background: #724ae8;
+  border-radius: 4px;
+  margin: 0 10px 7px 0;
+}
+.chatbox .chat p {
+  white-space: pre-wrap;
+  padding: 12px 16px;
+  border-radius: 10px 10px 0 10px;
+  max-width: 75%;
+  color: #fff;
+  font-size: 0.95rem;
+  background: #724ae8;
+}
+.chatbox .incoming p {
+  border-radius: 10px 10px 10px 0;
+}
+.chatbox .chat p.error {
+  color: #721c24;
+  background: #f8d7da;
+}
+.chatbox .incoming p {
+  color: #000;
+  background: #f2f2f2;
+}
+.chatbot .chat-input {
+  display: flex;
+  gap: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 3px 20px;
+  border-top: 1px solid #ddd;
+}
+.chat-input textarea {
+  height: 55px;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  max-height: 180px;
+  padding: 15px 15px 15px 0;
+  font-size: 0.95rem;
+}
+.chat-input span {
+  align-self: flex-end;
+  color: #724ae8;
+  cursor: pointer;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+  font-size: 1.35rem;
+}
+.chat-input textarea:valid ~ span {
+  visibility: visible;
+}
+
+@media (max-width: 490px) {
+  .chatbot-toggler {
+    right: 20px;
+    bottom: 20px;
+  }
+  .chatbot {
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    border-radius: 0;
+    width: 100%;
+  }
+  .chatbot .chatbox {
+    height: 90%;
+    padding: 25px 15px 100px;
+  }
+  .chatbot .chat-input {
+    padding: 5px 15px;
+  }
+  .chatbot header span {
+    display: block;
+  }
+}
+
+/* for slider */
+
+.slider-header {
+  margin: 5px; 
+  text-align: center;
+  padding-bottom: 5px; 
+  font-size: 1.5em; 
+  color: #333; 
+}
+
+.slide-track {
+  display: inline-flex;
+  gap: 3em; /* Adjust gap as needed */
+  animation: scroll 360s linear infinite;
+}
+
+.slideimg {
+  height: 100px;
+  display: inline-block; /* Necessary for white-space: nowrap */
+}
+
+.slider-card {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  overflow: hidden; /* Ensure overflow is hidden for the card */
+  position: relative;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Adjust as necessary based on number of images */
+}
+
+
+/* PROFIL DROP DOWN */
+
+
+.profile-dropdown {
+  position: relative;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.5s ease;
+}
+
+.profile-link i {
+  margin-right: 5px;
+}
+
+.profile-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  min-width: 160px;
+  border-radius: 5px;
+  right: 0; 
+  margin-top: 14px;
+}
+
+.profile-dropdown {
+  position: relative;
+}
+
+.profile-menu a {
+  color: #ffffff;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.profile-menu {
+  background-color: #ffffff;
+  color: #f4f0f0;
+}
+
+.profile-dropdown:hover .profile-menu {
+  display: block;
+}
+
+
+/* about */
+
+.abouthead {
+  text-align: center;
+  font-size: 2.5em;
+  margin: 20px 0;
+  color: #333;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+.aboutcard {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.aboutcard:hover {
+  transform: translateY(-10px);
+}
+
+.aboutimage {
+  width: 100%;
+  height: auto;
+  border-bottom: 5px solid #724ae8;
+}
+
+.about_text {
+  padding: 20px;
+}
+
+.about_text h3 {
+  margin: 10px 0;
+  font-size: 1.5em;
+  color: #724ae8;
+}
+
+.about_text p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+  height: 50px;
+}
+
+.social-links a {
+  color: #724ae8;
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
+.social-links a:hover {
+  color: #333;
+}
+
+/* maps */
+/* Styling for the map and contact container */
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px; /* Adjust the gap between the map and contact card */
+}
+
+/* Styling for the map */
+/* Styling for the map and contact container */
+
+
+/* Styling for the map */
+.card iframe {
+  border: none;
+  width: 900px;
+  height: 400px; /* Limiting maximum width for larger screens */
+  /* eight: auto; Adjust height as per your map's aspect ratio */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  overflow: hidden;
+}
+
+/* Styling for the contact card */
+.contact {
+  width: 35%; /* Adjust width as needed */
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.contact h3 {
+  margin-top: 0;
+}
+
+.contact p {
+  margin-bottom: 0.5rem;
+}
+
+.contact .social-links a {
+  margin-right: 0.5rem;
+}
+
+
+/* Styling for the contact card */
+.contact {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 40%; /* Adjust width as needed */
+}
+
+.contact h1.abouthead {
+  color: white;
+  margin-top: 0;
+}
+
+.contact .aboutcard {
+  display: flex;
+  align-items: center;
+}
+
+.contact .aboutimage {
+  width: 100px; /* Adjust image size as needed */
+  height: 100px; /* Adjust image size as needed */
+  border-radius: 50%; /* Makes the image round */
+  margin-right: 1.5rem;
+}
+
+.contact .about_text {
+  flex: 1; /* Takes remaining space */
+}
+
+.contact .about_text h3 {
+  margin-top: 0;
+}
+
+.contact .about_text p {
+  margin-bottom: 0.5rem;
+}
+
+.contact .social-links a {
+  margin-right: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card iframe {
+    width: 100%;
+    height: 300px; /* Adjust height for smaller screens */
+  }
+
+  .contact {
+    width: 100%;
+    margin-top: 1.5rem; /* Add some space between the map and contact card on smaller screens */
+  }
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background: rgb(255, 255, 255,0);
+  padding-left: 20px;
+  box-sizing: border-box; /* Ensure padding is included in the width */
+}
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%; /* Adjust width for larger screens */
+  display: inline-block;
+}
+ 
+/* Add a card effect for articles */
+.card {
+  background-color: rgb(255, 255, 255,0.5);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  margin-bottom: 30px;
+  max-width: 100%; /* Adjust maximum width for responsiveness */
+
+}
+
+/* Adjustments for small screens */
+@media screen and (max-width: 1300px) {
+  .rightcolumn {
+    width: 100%; /* Adjust width for smaller screens */
+  }
+}
+
+
+
+
+/* Adjustments for smaller screens */
+@media screen and (max-width:1300px) {
+  .leftcolumn {
+    width: 100%; /* Adjust width for smaller screens */
+  }
+.text-box {
+  width: 100%; /* Adjust width to fill the left column */
+  color: black;
+  position: relative;
+  text-align: center;
+}
+  .contact-container {
+    width: auto;
+    height: auto;
+  }
+  
+}
+
