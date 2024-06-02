@@ -10,7 +10,7 @@ var navLinks = document.getElementById("navLinks");
 
 
 let userMessage = null; // Variable to store user's message
-const API_KEY = "8f344fc6cdmshd76b3e7c61e7dd2p1ec063jsnb7c20e582d21"; //API key
+const API_KEY = "87d1a60a8msh9150d28133fd93ap1f9cb7jsn6a2414121850"; //API key
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const popupOverlay = document.getElementById("popup-overlay");
   
     if (username) {
-      greetingMessage.textContent = `Hi ${username}, how can I help you today?`;
+      greetingMessage.textContent = `Hi User Welcome back, how can I help you today?`;
       if (popupOverlay) {
         popupOverlay.style.display = "none"; // Hide the popup if user is logged in
       }
@@ -183,7 +183,7 @@ const logoutLink = document.getElementById('logout-link');
 // Function to display the username and show/hide the login and logout links
 function updateProfileDisplay(username) {
   if (username) {
-    profileName.textContent = username;
+    profileName.textContent = "Welcome User";
     loginLink.style.display = 'none';
     logoutLink.style.display = 'block';
   } else {

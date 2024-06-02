@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="../index.html" style="color: orange;">Doubt Hut</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="doubtsHome.html">Doubts</a></li>
+                    <li><a href="index.html">AI CHAT</a></li>
+                    <li class="right" id="logout-link" style="display: none;"><a onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="chat-sidebar">
+            <div class="sidebar-header">
+                <h3>Chats</h3>
+                <button class="hero-btn" id="new-chat">New Chat</a>
+            </div>
+            <ul class="chat-tabs"></ul>
+        </div>
+        <div class="chat-box-wrapper">
+            <div id="login-overlay" class="login-overlay" style="display: none;">
+                <div class="login-content">
+                    <h2>Sign in to continue</h2>
+                    <p>Please sign in to access the chat-box.</p>
+                    <a href="../login.html" class="sign-in-btn">Sign In</a>
+                </div>
+            </div>
+            <div class="chat-box-container">
+                <div class="chat-container">
+                    <div class="chat-box" id="chat-box">
+                        <ul class="chatbox"></ul>
+                    </div>
+                    <div class="chat-input">
+                        <textarea id="user-input" placeholder="Type a message..." autofocus></textarea>
+                        <span>Send</span>
+                    </div>
+                    <p style="text-align: center ;color: #727272;">Chats will be stored during this session</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="../script.js"></script>
+</body>
+</html>
