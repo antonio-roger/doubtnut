@@ -1,33 +1,26 @@
-
-/*************************************CHAT-BOT***********************************************/
-
-const chatbotToggler = document.querySelector(".chatbot-toggler");
-const closeBtn = document.querySelector(".close-btn");
 const chatbox = document.querySelector(".chatbox");
-const chatInput = document.querySelector(".chat-input textarea");
+const chatInput = document.getElementById("user-input");
 const sendChatBtn = document.querySelector(".chat-input span");
-var navLinks = document.getElementById("navLinks");
-
-
-let userMessage = null; // Variable to store user's message
-const API_KEY = "8f344fc6cdmshd76b3e7c61e7dd2p1ec063jsnb7c20e582d21"; //API key
+const chatTabs = document.querySelector(".chat-tabs");
+const newChatBtn = document.getElementById("new-chat");
+let userMessage = null;
+let activeChat = null;
+let chatHistory = [];
+const API_KEY = "8f344fc6cdmshd76b3e7c61e7dd2p1ec063jsnb7c20e582d21"; // Your provided RapidAPI key
 const inputInitHeight = chatInput.scrollHeight;
 
 const createChatLi = (message, className) => {
-    // Create a chat <li> element with passed message and className
     const chatLi = document.createElement("li");
-    chatLi.classList.add("chat", `${className}`);
-    let chatContent = className === "outgoing" ? `<p></p>` : `<span class="material-symbols-outlined">smart_toy</span><p></p>`;
+    chatLi.classList.add("message", `${className}`);
+    let chatContent = className === "outgoing" ? `<p></p>` : `<div class="logo-container"><image src="chatbot-chat-message-vectorart_78370-4104.jpg.avif" fit centered></video><span class="material-symbols-outlined">Doubt Hut</span></div><div class="incoming-message-content"><p></p></div>`;
     chatLi.innerHTML = chatContent;
     chatLi.querySelector("p").textContent = message;
-    return chatLi; // return chat <li> element
+    return chatLi;
 }
 
 const generateResponse = (chatElement) => {
     const API_URL = "https://cheapest-gpt-4-turbo-gpt-4-vision-chatgpt-openai-ai-api.p.rapidapi.com/v1/chat/completions";
     const messageElement = chatElement.querySelector("p");
-
-    // Define the properties and message for the API request
     const requestOptions = {
         method: "POST",
         headers: {
@@ -38,41 +31,49 @@ const generateResponse = (chatElement) => {
         body: JSON.stringify({
             messages: [{ role: "user", content: userMessage }],
             model: "gpt-4-turbo-preview",
-            max_tokens: 200,
+            max_tokens: 2000,
             temperature: 0.9
         })
     }
-
-    // Send POST request to API, get response and set the response as paragraph text
     fetch(API_URL, requestOptions)
-        .then(res => res.json())
-        .then(data => {
-            messageElement.textContent = data.choices[0].message.content.trim();
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
         })
-        .catch(() => {
+        .then(data => {
+            const response = data.choices[0].message.content.trim();
+            messageElement.textContent = response;
+            addMessageToHistory(response, "incoming");
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+        })
+        .catch(error => {
+            console.error("API request error:", error);
             messageElement.classList.add("error");
             messageElement.textContent = "Oops! Something went wrong. Please try again.";
+            chatbox.scrollTo(0, chatbox.scrollHeight);
         })
         .finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
 }
 
 const handleChat = () => {
-    userMessage = chatInput.value.trim(); // Get user entered message and remove extra whitespace
-
-        setTimeout(showPopup, 0); // Show popup after 10 seconds (10000 milliseconds
-
+    userMessage = chatInput.value.trim();
     if (!userMessage) return;
-
-    // Clear the input textarea and set its height to default
     chatInput.value = "";
     chatInput.style.height = `${inputInitHeight}px`;
 
-    // Append the user's message to the chatbox
-    chatbox.appendChild(createChatLi(userMessage, "outgoing"));
-    chatbox.scrollTo(0, chatbox.scrollHeight);
+    setTimeout(showPopup, 0); 
 
+    const previousOutgoingLogos = chatbox.querySelectorAll(".message.outgoing .logo-container");
+    previousOutgoingLogos.forEach(logo => {
+        logo.parentNode.removeChild(logo);
+    });
+    const outgoingMessage = createChatLi(userMessage, "outgoing");
+    chatbox.appendChild(outgoingMessage);
+    addMessageToHistory(userMessage, "outgoing");
+    chatbox.scrollTo(0, chatbox.scrollHeight);
     setTimeout(() => {
-        // Display "Thinking..." message while waiting for the response
         const incomingChatLi = createChatLi("Thinking...", "incoming");
         chatbox.appendChild(incomingChatLi);
         chatbox.scrollTo(0, chatbox.scrollHeight);
@@ -81,55 +82,118 @@ const handleChat = () => {
 }
 
 chatInput.addEventListener("input", () => {
-    // Adjust the height of the input textarea based on its content
     chatInput.style.height = `${inputInitHeight}px`;
     chatInput.style.height = `${chatInput.scrollHeight}px`;
 });
 
 chatInput.addEventListener("keydown", (e) => {
-    // If Enter key is pressed without Shift key and the window 
-    // width is greater than 800px, handle the chat
     if (e.key === "Enter" && !e.shiftKey && window.innerWidth > 800) {
         e.preventDefault();
         handleChat();
     }
 });
 
-
 sendChatBtn.addEventListener("click", handleChat);
-closeBtn.addEventListener("click", () => document.body.classList.remove("show-chatbot"));
-chatbotToggler.addEventListener("click", () => document.body.classList.toggle("show-chatbot"));
-/***********************************************************************************************/
 
+function createChatTab(chatName = "New Chat") {
+    const chatTab = document.createElement("li");
+    chatTab.classList.add("chat-tab");
+    chatTab.textContent = chatName;
+    chatTab.addEventListener("click", () => {
+        activateChat(chatTab);
+    });
+    chatTabs.appendChild(chatTab);
+    activateChat(chatTab);
+}
 
-// collsb --->>>>scroll
-document.addEventListener("DOMContentLoaded", function() {
-    const slideTrack = document.querySelector('.slide-track');
-    const slideItems = Array.from(document.querySelectorAll('.slideimg'));
+function activateChat(chatTab) {
+    const activeChatTab = document.querySelector(".chat-tab.active");
+    if (activeChatTab) {
+        activeChatTab.classList.remove("active");
+    }
+    chatTab.classList.add("active");
+    activeChat = chatTab;
+    chatbox.innerHTML = "";
+    const chatHistory = getChatHistory(chatTab);
+    chatHistory.forEach(message => {
+        const li = createChatLi(message.content, message.type);
+        chatbox.appendChild(li);
+    });
+    chatbox.scrollTo(0, chatbox.scrollHeight);
+}
 
-    // Clone all items and append them to the slide track
-    for (let n = 0; n < 30; n++) {
-        slideItems.forEach(item => {
-            let clone = item.cloneNode(true);
-            slideTrack.appendChild(clone);
-        });
+function getChatHistory(chatTab) {
+    const chatIndex = Array.from(chatTabs.children).indexOf(chatTab);
+    return chatHistory[chatIndex] || [];
+}
+
+function addMessageToHistory(message, type) {
+    const chatIndex = Array.from(chatTabs.children).indexOf(activeChat);
+    if (!chatHistory[chatIndex]) {
+        chatHistory[chatIndex] = [];
+    }
+    chatHistory[chatIndex].push({ content: message, type });
+}
+
+newChatBtn.addEventListener("click", () => {
+    const chatName = prompt("Enter a name for the new chat:");
+    if (chatName) {
+        createChatTab(chatName);
     }
 });
 
-//Personalised Hi msg....
+const initialMessage = "Welcome to Doubt Hut..... Type your question...";
+createChatTab("Welcome");
+const incomingChatLi = createChatLi(initialMessage, "incoming");
+chatbox.appendChild(incomingChatLi);
+chatbox.scrollTo(0, chatbox.scrollHeight);
+
+
+// TOOGLE
+function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    if (navLinks.style.right === "0px") {
+        navLinks.style.right = "-200px";
+    } else {
+        navLinks.style.right = "0px";
+    }
+}
+
+function toggleMenu() {
+    const navLinks = document.getElementById('navLinks');
+    if (navLinks.style.right === "0px") {
+        navLinks.style.right = "-200px";
+    } else {
+        navLinks.style.right = "0px";
+    }
+}
+
+      // Function to clear localStorage and reload page on logout
+      function logout(){
+        localStorage.removeItem("username"); // Clear username from localStorage
+        window.location.href = "index.html"
+        localStorage.removeItem("username"); // Clear username from localStorage
+          alert("Logged out successfully!");
+        firebase.auth().signOut().then(() => {
+          console("logged out in firebase")
+        }).catch((error) => {
+          alert("Error logging out. Please try again.");
+        });
+      };
+
+      //Personalised Hi msg....
   document.addEventListener("DOMContentLoaded", function() {
     const username = localStorage.getItem("username");
-    const greetingMessage = document.getElementById("greetingMessage");
+    
     const popupOverlay = document.getElementById("popup-overlay");
   
     if (username) {
-      greetingMessage.textContent = `Hi ${username}, how can I help you today?`;
+     
       if (popupOverlay) {
         popupOverlay.style.display = "none"; // Hide the popup if user is logged in
       }
     } else {
-      greetingMessage.textContent = "Hi Guest, Login to continue";
-  
+     
       // Dynamically display popup content if username doesn't exist
       if (popupOverlay) {
         popupOverlay.innerHTML = `
@@ -150,62 +214,3 @@ function showPopup() {
   var popupOverlay = document.getElementById("popup-overlay");
   popupOverlay.style.display = "block";
 }
-
-  
-    // Function to clear localStorage and reload page on logout
-    function logout(){
-      localStorage.removeItem("username"); // Clear username from localStorage
-      window.location.href = "index.html"
-      localStorage.removeItem("username"); // Clear username from localStorage
-        alert("Logged out successfully!");
-      firebase.auth().signOut().then(() => {
-        console("logged out in firebase")
-      }).catch((error) => {
-        alert("Error logging out. Please try again.");
-      });
-    };
-  //
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-  
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-              behavior: 'smooth'
-          });
-      });
-  });
-  
-
-// Get the profile name, login link, and logout link elements
-const profileName = document.getElementById('profile-name');
-const loginLink = document.getElementById('login-link');
-const logoutLink = document.getElementById('logout-link');
-// Function to display the username and show/hide the login and logout links
-function updateProfileDisplay(username) {
-  if (username) {
-    profileName.textContent = username;
-    loginLink.style.display = 'none';
-    logoutLink.style.display = 'block';
-  } else {
-    profileName.textContent = 'Profile';
-    loginLink.style.display = 'block';
-    logoutLink.style.display = 'none';
-  }
-}
-// Function to handle logout
-function logout() {
-  // Remove the username from local storage
-  localStorage.removeItem('username');
-  // Update the profile display
-  updateProfileDisplay(null);
-  // Redirect to the login page
-  window.location.href = 'login.html';
-}
-// Check if the user is logged in
-document.addEventListener('DOMContentLoaded', function() {
-  const username = localStorage.getItem('username');
-  updateProfileDisplay(username);
-});
-// Add click event listener to the logout link
-logoutLink.addEventListener('click', logout);
-
